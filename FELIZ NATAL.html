@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Natal, meu puto puto!</title>
+    <style>
+        /* Fundo animado com transição de cores vibrantes */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff007f, #ff8c00, #ff0000, #ff1493);
+            background-size: 300% 300%;
+            animation: mudarCores 8s infinite;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        @keyframes mudarCores {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 8vw; /* Ajustado para 8% do largura da tela */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            width: 90%; /* Ajustado para ocupar a largura da tela */
+            max-width: 200px;
+            max-width: 200px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            width: 90%; /* Ajustado para ocupar a largura da tela */
+            max-width: 200px;
+        }
+
+        button:hover {
+            background-color: #ff007f;
+        }
+
+        #mensagem {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            text-align: center;
+        }
+/* Media Queries para ajustar o layout em dispositivos móveis */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 10vw; /* Aumenta o tamanho da fonte do título em telas menores */
+    }
+
+    input {
+        font-size: 5vw; /* Aumenta o tamanho da fonte do campo de entrada */
+    }
+
+    button {
+        font-size: 5vw; /* Aumenta o tamanho da fonte do botão */
+    }
+
+    #mensagem {
+        font-size: 6vw; /* Aumenta o tamanho da mensagem */
+    }
+}
+
+/* Media Queries para telas ainda maiores, como tablets */
+@media (max-width: 900px) {
+    h1 {
+        font-size: 6vw; /* Reduz o tamanho da fonte para telas médias */
+    }
+
+    input {
+        font-size: 3vw; /* Reduz o tamanho da fonte do campo de entrada */
+    }
+
+    button {
+        font-size: 3vw; /* Reduz o tamanho da fonte do botão */
+    }
+
+    #mensagem {
+        font-size: 4vw; /* Ajuste para mensagens */
+    }
+}
+
+        p {
+            margin: 10px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aparecerTexto 0.8s forwards ease-out;
+        }
+
+        @keyframes aparecerTexto {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animação das letras dentro dos parágrafos */
+        .letra {
+            display: inline-block;
+            opacity: 0;
+            animation: aparecerLetra 0.5s forwards;
+        }
+
+        p {
+            margin: 10px 0;
+            opacity: 0;
+            transform: translate(20px);
+            animation: aparecerTexto 0.8s forwards ease-out;
+            white-space: nowrap;
+        }
+
+        @keyframes aparecerLetra {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animação dos espaços entre as palavras */
+        .espaco {
+            display: inline-block;
+            width: 10px; /* Ajuste o tamanho do espaço entre palavras */
+        }
+
+        /* Animação dos balões */
+        .balao {
+            position: absolute;
+            animation: flutuar 10s infinite;
+            max-width: 250px; /* Tamanho aumentado para maior visibilidade */
+            pointer-events: none;
+            animation-play-state: paused;
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50vh) rotate(180deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Feliz Natal</h1>
+    <input id="nome" type="text" placeholder="Digite seu nome aqui">
+    <button onclick="exibirMensagem()">Enviar</button>
+    <div id="mensagem"></div>
+    
+    <!-- Som de explosão -->
+    <audio id="explosao" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+    <!-- Imagens dos balões -->
+    <img src="Nova pasta/1.png" class="balao" style="left: 10%; animation-duration: 8s;">
+    <img src="Nova pasta/2.png" class="balao" style="left: 30%; animation-duration: 10s;">
+    <img src="Nova pasta/3.png" class="balao" style="left: 50%; animation-duration: 12s;">
+    <img src="Nova pasta/4.png" class="balao" style="left: 70%; animation-duration: 9s;">
+    <img src="Nova pasta/5.png" class="balao" style="left: 90%; animation-duration: 11s;">
+    <img src="Nova pasta/6.png" class="balao" style="left: 10%; animation-duration: 8s;">
+    <img src="Nova pasta/7.png" class="balao" style="left: 30%; animation-duration: 10s;">
+    <img src="Nova pasta/8.png" class="balao" style="left: 50%; animation-duration: 12s;">
+    <img src="Nova pasta/9.png" class="balao" style="left: 70%; animation-duration: 9s;">
+    <img src="Nova pasta/10.png" class="balao" style="left: 90%; animation-duration: 11s;">
+    <img src="Nova pasta/1.png" class="balao" style="left: 10%; animation-duration: 8s;">
+    <img src="Nova pasta/2.png" class="balao" style="left: 30%; animation-duration: 10s;">
+    <img src="Nova pasta/3.png" class="balao" style="left: 50%; animation-duration: 12s;">
+    <img src="Nova pasta/4.png" class="balao" style="left: 70%; animation-duration: 9s;">
+    <img src="Nova pasta/5.png" class="balao" style="left: 90%; animation-duration: 11s;">
+    <img src="Nova pasta/6.png" class="balao" style="left: 10%; animation-duration: 8s;">
+    <img src="Nova pasta/7.png" class="balao" style="left: 30%; animation-duration: 10s;">
+    <img src="Nova pasta/8.png" class="balao" style="left: 50%; animation-duration: 12s;">
+    <img src="Nova pasta/9.png" class="balao" style="left: 70%; animation-duration: 9s;">
+    <img src="Nova pasta/10.png" class="balao" style="left: 90%; animation-duration: 11s;">
+   
+    
+    <script>
+        function exibirMensagem() {
+            const nome = document.getElementById('nome').value.trim();
+            const mensagemDiv = document.getElementById('mensagem');
+            const audio = document.getElementById('explosao');
+            const baloes = document.querySelectorAll('.balao');
+            mensagemDiv.innerHTML = ''; // Limpa qualquer mensagem anterior
+
+            if (nome) {
+                const mensagem = [
+                    `Feliz Natal, ${nome}!`,
+                    "Com muito amor e carinho",
+                    "eu Marcellous França desejo-te muita saúde e sucesso!"
+                ];
+                let delay = 0;
+
+                // Inicia o som assim que a animação começar
+                setTimeout(() => {
+                    audio.play();
+                }, 300);
+
+                mensagem.forEach((texto) => {
+                    const paragrafo = document.createElement('p');
+                    paragrafo.style.animationDelay = `${delay}s`;
+                    mensagemDiv.appendChild(paragrafo);
+
+                    // Para cada parágrafo, dividimos o texto em letras e animamos
+                    const palavras = texto.split(' ');
+
+                    palavras.forEach((palavra, index) => {
+                        // Para cada palavra, dividimos em letras
+                        for (let i = 0; i < palavra.length; i++) {
+                            const letra = document.createElement('span');
+                            letra.classList.add('letra');
+                            letra.style.animationDelay = `${delay + i * 0.1}s`; // Atraso para cada letra
+                            letra.textContent = palavra[i];
+                            paragrafo.appendChild(letra);
+                        }
+
+                        // Adiciona o espaço entre as palavras
+                        if (index < palavras.length - 1) {
+                            const espaco = document.createElement('span');
+                            espaco.classList.add('espaco');
+                            paragrafo.appendChild(espaco);
+                        }
+
+                        delay += palavra.length * 0.1 + 0.2; // Atraso entre as palavras
+                    });
+
+                    delay += 3; // Atraso entre os parágrafos
+                });
+
+                mensagemDiv.style.opacity = 1;
+
+                // Inicia a animação dos balões
+                baloes.forEach((balao) => {
+                    balao.style.animationPlayState = 'running';
+                });
+            } else {
+                mensagemDiv.textContent = "Por favor, insira seu nome.";
+            }
+        }
+    </script>
+</body>
+</html>
